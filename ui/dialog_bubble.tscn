@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://djlfn7solmwni"]
+
+[ext_resource type="Script" path="res://ui/dialog_bubble.gd" id="1_50ulw"]
+[ext_resource type="FontFile" uid="uid://dux0xekpcigua" path="res://assets/UI/SuCaiJiShiKangKangTi-2.ttf" id="1_61k0i"]
+[ext_resource type="Texture2D" uid="uid://cfcqs1qav3es0" path="res://assets/UI/对话框点9图.9.png" id="1_uokn2"]
+[ext_resource type="Texture2D" uid="uid://clav38bknq3b1" path="res://assets/UI/对话框把手.png" id="2_7hm1x"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r5tma"]
+texture = ExtResource("1_uokn2")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+
+[node name="DialogBubble" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_50ulw")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(200, 2.08165e-12)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = -185.0
+offset_right = 471.0
+offset_bottom = -22.0
+grow_vertical = 0
+mouse_filter = 0
+theme_override_colors/font_color = Color(0.180392, 0.0156863, 0.00784314, 1)
+theme_override_fonts/font = ExtResource("1_61k0i")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_r5tma")
+text = "你好啊，小伙子.你好啊，小伙子.你好啊，小伙子.你好啊，小伙子.你好啊，小伙子.你好啊，小伙子.你好啊，小伙子.你好啊，小伙子."
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -59.0
+offset_right = 61.0
+grow_vertical = 0
+texture = ExtResource("2_7hm1x")
+flip_h = true
+
+[connection signal="gui_input" from="Label" to="." method="_on_label_gui_input"]

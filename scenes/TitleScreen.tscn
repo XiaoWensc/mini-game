@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://v5h4wj3gnp8i"]
+
+[ext_resource type="Theme" uid="uid://dg4osfjiek35o" path="res://scenes/title_theme.tres" id="1_kbs0v"]
+[ext_resource type="Texture2D" uid="uid://cjheaavc5llga" path="res://assets/UI/title_screen.png" id="2_vnodr"]
+[ext_resource type="FontFile" uid="uid://dux0xekpcigua" path="res://assets/UI/SuCaiJiShiKangKangTi-2.ttf" id="3_h13g7"]
+[ext_resource type="Script" path="res://scenes/TitleScreen.gd" id="3_n2jqf"]
+
+[node name="TitleScreen" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_kbs0v")
+texture = ExtResource("2_vnodr")
+script = ExtResource("3_n2jqf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -54.5
+offset_right = 49.0
+offset_bottom = 54.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="New" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_h13g7")
+theme_override_font_sizes/font_size = 30
+text = "新游戏"
+
+[node name="Load" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "加载游戏"
+
+[node name="Settings" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "设置"
+
+[node name="MusicSettings" type="CheckButton" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "背景音乐"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "退出游戏"
+
+[connection signal="pressed" from="VBoxContainer/New" to="." method="_on_new_pressed"]
+[connection signal="pressed" from="VBoxContainer/Load" to="." method="_on_load_pressed"]
+[connection signal="toggled" from="VBoxContainer/Settings" to="." method="_on_settings_toggled"]
+[connection signal="toggled" from="VBoxContainer/MusicSettings" to="." method="_on_music_settings_toggled"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

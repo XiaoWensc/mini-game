@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddy1mnji3j4dj"]
+
+[ext_resource type="PackedScene" uid="uid://conravtoio6w7" path="res://scenes/scene.tscn" id="1_3ylmg"]
+[ext_resource type="Script" path="res://classes/Teleporter.gd" id="2_yer46"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f247d"]
+radius = 50.01
+
+[node name="H1" instance=ExtResource("1_3ylmg")]
+
+[node name="Teleporter" type="Area2D" parent="." index="0"]
+position = Vector2(839, -153)
+script = ExtResource("2_yer46")
+target_path = "res://scenes/h_2.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter" index="0"]
+shape = SubResource("CircleShape2D_f247d")

@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://7kd5ctti3pru"]
+
+[ext_resource type="PackedScene" uid="uid://conravtoio6w7" path="res://scenes/scene.tscn" id="1_aq0o0"]
+[ext_resource type="Texture2D" uid="uid://biqvknwv5vkll" path="res://assets/H2A/roomsignBG.png" id="2_cnfry"]
+[ext_resource type="Script" path="res://classes/Teleporter.gd" id="3_tdewi"]
+[ext_resource type="Script" path="res://scenes/H2ABoard.gd" id="4_a2pgc"]
+[ext_resource type="Resource" uid="uid://bujjy0dpnioao" path="res://mini-game/easy.tres" id="5_2fki5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ovj2c"]
+radius = 62.434
+
+[node name="H2a" instance=ExtResource("1_aq0o0")]
+texture = ExtResource("2_cnfry")
+music_override = "res://assets/Music/OpenRoad.mp3"
+
+[node name="Teleporter" type="Area2D" parent="." index="0"]
+position = Vector2(-803, -430)
+script = ExtResource("3_tdewi")
+target_path = "res://scenes/h_2.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter" index="0"]
+shape = SubResource("CircleShape2D_ovj2c")
+
+[node name="Board" type="Node2D" parent="." index="1"]
+position = Vector2(-40, 7)
+script = ExtResource("4_a2pgc")
+radius = 370.0
+config = ExtResource("5_2fki5")

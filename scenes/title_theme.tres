@@ -1,0 +1,37 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dg4osfjiek35o"]
+
+[ext_resource type="Texture2D" uid="uid://er7hfvbllqhl" path="res://assets/UI/title_button.png" id="1_gmjpe"]
+[ext_resource type="FontFile" uid="uid://dux0xekpcigua" path="res://assets/UI/SuCaiJiShiKangKangTi-2.ttf" id="1_jrt7v"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g3oa4"]
+texture = ExtResource("1_gmjpe")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4sgxb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uk8eg"]
+texture = ExtResource("1_gmjpe")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f8me1"]
+
+[resource]
+default_font = ExtResource("1_jrt7v")
+default_font_size = 30
+Button/styles/disabled = SubResource("StyleBoxTexture_g3oa4")
+Button/styles/focus = SubResource("StyleBoxEmpty_4sgxb")
+Button/styles/hover = SubResource("StyleBoxTexture_g3oa4")
+Button/styles/normal = SubResource("StyleBoxTexture_g3oa4")
+Button/styles/pressed = SubResource("StyleBoxTexture_g3oa4")
+CheckButton/styles/disabled = SubResource("StyleBoxTexture_uk8eg")
+CheckButton/styles/focus = SubResource("StyleBoxEmpty_f8me1")
+CheckButton/styles/hover = SubResource("StyleBoxTexture_uk8eg")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxTexture_uk8eg")
+CheckButton/styles/normal = SubResource("StyleBoxTexture_uk8eg")
+CheckButton/styles/pressed = SubResource("StyleBoxTexture_uk8eg")

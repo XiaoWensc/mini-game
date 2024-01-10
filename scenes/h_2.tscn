@@ -1,0 +1,85 @@
+[gd_scene load_steps=15 format=3 uid="uid://dri2fanrb70hw"]
+
+[ext_resource type="PackedScene" uid="uid://conravtoio6w7" path="res://scenes/scene.tscn" id="1_lougp"]
+[ext_resource type="Texture2D" uid="uid://b5yjthkn6mcst" path="res://assets/H2/H2.png" id="2_2tqm3"]
+[ext_resource type="Script" path="res://classes/Teleporter.gd" id="2_s13gu"]
+[ext_resource type="Script" path="res://scenes/h_2.gd" id="3_1uk8i"]
+[ext_resource type="Script" path="res://classes/Interactable.gd" id="4_mld7k"]
+[ext_resource type="PackedScene" uid="uid://djlfn7solmwni" path="res://ui/dialog_bubble.tscn" id="6_ovbtb"]
+[ext_resource type="Script" path="res://classes/SceneItem.gd" id="7_h4h21"]
+[ext_resource type="Texture2D" uid="uid://d23bjm4bmjgfh" path="res://assets/H2/key.png" id="7_lp8dt"]
+[ext_resource type="Resource" uid="uid://bbrqarc7m38fe" path="res://items/key.tres" id="8_8gm2v"]
+[ext_resource type="Script" path="res://classes/FlagSwitch.gd" id="10_qgbae"]
+[ext_resource type="Texture2D" uid="uid://cnk4lsrgrmd18" path="res://assets/H2/door.png" id="10_twf2h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f2afq"]
+radius = 54.231
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0yj3i"]
+size = Vector2(203, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsfr1"]
+size = Vector2(300, 456)
+
+[node name="H2" instance=ExtResource("1_lougp")]
+texture = ExtResource("2_2tqm3")
+script = ExtResource("3_1uk8i")
+
+[node name="toH1" type="Area2D" parent="." index="0"]
+position = Vector2(-673, -330)
+script = ExtResource("2_s13gu")
+target_path = "res://scenes/h_1.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="toH1" index="0"]
+shape = SubResource("CircleShape2D_f2afq")
+
+[node name="toH4" type="Area2D" parent="." index="1"]
+position = Vector2(751, 23)
+script = ExtResource("2_s13gu")
+target_path = "res://scenes/h_4.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="toH4" index="0"]
+shape = SubResource("CircleShape2D_f2afq")
+
+[node name="FlagSwitch" type="Node2D" parent="." index="2"]
+position = Vector2(339, 91)
+script = ExtResource("10_qgbae")
+flag = "h2a_unlocked"
+
+[node name="toH2A" type="Area2D" parent="FlagSwitch" index="0"]
+position = Vector2(-323, -310)
+script = ExtResource("2_s13gu")
+target_path = "res://scenes/h_2a.tscn"
+texture = ExtResource("10_twf2h")
+
+[node name="toH3" type="Area2D" parent="FlagSwitch" index="1"]
+position = Vector2(-309, -312)
+script = ExtResource("2_s13gu")
+target_path = "res://scenes/h_3.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlagSwitch/toH3" index="0"]
+position = Vector2(9.5, -4)
+shape = SubResource("RectangleShape2D_0yj3i")
+
+[node name="Interactable" type="Area2D" parent="." index="3"]
+script = ExtResource("4_mld7k")
+allow_item = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" index="0"]
+position = Vector2(-462, -81)
+shape = SubResource("RectangleShape2D_xsfr1")
+
+[node name="DialogBubble" parent="Interactable" index="1" instance=ExtResource("6_ovbtb")]
+visible = false
+offset_left = -304.0
+offset_top = 39.0
+offset_right = -304.0
+offset_bottom = 39.0
+
+[node name="SceneItem" type="Area2D" parent="." index="4"]
+position = Vector2(-12, 396)
+script = ExtResource("7_h4h21")
+item = ExtResource("8_8gm2v")
+texture = ExtResource("7_lp8dt")
+
+[connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]
